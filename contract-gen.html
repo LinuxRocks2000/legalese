@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            Clarke Information Systems Contract Generator
+        </title>
+        <link rel="stylesheet" href="contract-gen.css">
+    </head>
+    <body>
+        <div id="ui">
+            company name: <input id="coname" type="text" value="Clarke Information Systems LLC"><br>
+            customer name: <input id="cuname" type="text" value="Foobar Baz Inc"><br>
+            payment: <input id="price" type="number" value="200"><br>
+            <div class="i">
+                payment types allowed:
+                <ul>
+                    <li>cash <input type="checkbox" name="ptypes" id="cash" checked></li>
+                    <li>shares <input type="checkbox" name="ptypes" id="shares"></li>
+                    <li>shares - 5 years <input type="checkbox" name="ptypes" id="shares5"></li>
+                    <li>
+                        payment plan <input type="checkbox" name="ptypes" id="pplans"><br>
+                        <div class="r">
+                            plan duration (months): <input type="number" id="payment-plan-months">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            project deliverables:
+            <ul>
+                <li>website <input type="checkbox" id="pd-website" checked></li>
+                <li>scheduling system <input type="checkbox" id="pd-schedule"></li>
+                <li>administration tools <input type="checkbox" id="pd-admin"></li>
+                <li>payment system <input type="checkbox" id="pd-payment"></li>
+                <li>price quote generator <input type="checkbox" id="pd-quote"></li>
+                <li>
+                    custom (input HTML list elements)<input type="checkbox" id="pd-custom">
+                    <div class="r">
+                        <input type="text" id="pd-custom-stuff">
+                    </div>
+                </li>
+            </ul>
+            document number: <input type="text" id="docnum" value="XXX"><br>
+            <button onclick="print()">Print</button>
+        </div>
+        <div id="print">
+            <table>
+                <thead>
+                    <tr><td>
+                        <small id="header"><span --t="coname"></span> Document #<span --t="docnum"></span></small><br>
+                    </td></tr>
+                </thead>
+                <tbody>
+                    <tr><td>
+                        <h2>CONTRACTUAL AGREEMENT</h2>
+                        <b>Section I</b><br><br>
+                        On this date of <span class="curday"></span>, <span --t="cuname"></span> does enter into contract with <span --t="coname"></span> for the development and delivery of,
+                        <ul>
+                            <li --t="pd-website">A Web site.</li>
+                            <li --t="pd-schedule">A scheduling system.</li>
+                            <li --t="pd-admin">Web Administration tools.</li>
+                            <li --t="pd-payment">A Payment Processing system.</li>
+                            <li --t="pd-quote">A Price Quote generator.</li>
+                            <span --t="pd-custom-stuff"></span>
+                        </ul>
+                        (Henceforth to be known as the DELIVERABLES.)<br>
+                        Modifications and/or personalizations of the DELIVERABLES may be requested by <span --t="cuname"></span>, to be honored at the sole discretion of <span --t="coname"></span>, as per the terms in Section III.
+                        In payment for the DELIVERABLES, <span --t="cuname"></span> commits to present to <span --t="coname"></span> ONE of,
+                        <ul>
+                            <li --t="cash">Moneys totaling not less than $<span --t="price"></span>.</li>
+                            <li --t="shares">Stock in <span --t="cuname"></span> valued at not less than $<span --t="price"></span>.</li>
+                            <li --t="shares5">Stock in <span --t="cuname"></span>, guaranteed as per the terms listed in Section II to have a valuation of at least $<span --t="price"></span> five years and one day past the signing of this contract.</li>
+                            <li --t="pplans">Agreement to a payment plan totaling not less than $<span --t="price"></span> over a period of <span --t="payment-plan-months"></span> months.</li>
+                        </ul>
+                        Payment must be rendered in full immediately upon delivery of the DELIVERABLES, as interpreted by <span --t="coname"></span>, in absence of the invocation of one or more of the exit conditions specified in Section II.
+                        <br><br>
+                        <b>Section II</b><br>
+                        <b>1. Default on Contract</b><br>
+                        In the event of incorrect payment as interpreted by <span --t="coname"></span>, this contract will be held in default. <span --t="cuname"></span> will relinquish the rights to any and all elements of the DELIVERABLES, including but not limited to,
+                        <ul>
+                            <li>Fonts,</li>
+                            <li>Artworks and designs,</li>
+                            <li>Web sites and domain names managed by <span --t="coname"></span>.</li>
+                        </ul>
+                        In the case of default, <span --t="coname"></span> reserves the right to take action including but not limited to,
+                        <ul>
+                            <li>The termination of any and all development of the DELIVERABLES,</li>
+                            <li>The repossession of any and all DELIVERABLES,</li>
+                            <li>The deactivation and deletion of any and all accounts or storage included as part of this contract,</li>
+                            <li>Hiring a collection agency to obtain payment from <span --t="cuname"></span> to fulfill the payment terms in Section I.</li>
+                        </ul>
+                        <span --t="cuname"></span> holds it as understood that any payments transferred to <span --t="coname"></span> will be considered nonrefundable in the case of default.<br><br>
+                        <b>2. Exit from Contract</b><br>
+                        In the event that it is no longer agreeable to <span --t="cuname"></span> to continue participation in this contract before its fulfillment, <span --t="cuname"></span> may request exit from the contract.
+                        In this case, <span --t="coname"></span> MAY, at their discretion, refund any payments made and discontinue service to any DELIVERABLES in this contract regardless of their completion status.<br><br>
+                        In the event that it is no longer agreeable to <span --t="coname"></span> to continue participation in this contract before its fulfillment, <span --t="coname"></span> WILL,
+                        <ul>
+                            <li>Refund any and all payments made as part of this contract,</li>
+                            <li>Provide a notice of not less than two weeks prior to the end of development, AND</li>
+                            <li>Take any steps deemed necessary to ensure a safe exit (e.g. reconfiguring servers, clearing passwords, etc).</li>
+                        </ul>
+                        <br>
+                        <b>3. Payment and Completion</b><br>
+                        The contract will be held to be completed by <span --t="coname"></span> upon,
+                        <ul>
+                            <li>Finalization of any and all DELIVERABLES, and their successful delivery to <span --t="cuname"></span>, AND</li>
+                            <li>The receipt of payment satisfying the terms listed in Section I.</li>
+                        </ul>
+                        In the case that <span --t="cuname"></span> pays <span --t="coname"></span> in shares of <span --t="cuname"></span> as per Section I, the following terms must apply:
+                        <ul>
+                            <li>The valuation of said shares must be not less than the amount of $<span --t="price"></span> at time of receipt</li>
+                            <li>In the case of deferred payment in shares (to be valued in 5 years and one day), <span --t="cuname"></span> guarantees that the value of said shares will at the time of five years and one day after the signing of this contract be no less than $<span --t="price"></span>, and agrees to provide additional payment to supplement any insufficiencies, at the sole discretion of <span --t="coname"></span>.</li>
+                        </ul>
+                        <br>
+                        <b>Section III</b><br>
+                        <span --t="cuname"></span> MUST provide adequate descriptions of their requests, as interpreted by <span --t="coname"></span>. <span --t="coname"></span> MAY request additional clarification at any time.<br><br>
+                        After the successful completion of the contract as per the terms in Section II, <span --t="cuname"></span> may at any time request further modifications or maintenance, to be fulfilled at the discretion of <span --t="coname"></span>. <span --t="coname"></span> may request an additional contract and payment for such modifications.
+                        <br><br>
+                        In the event of any dispute regarding this contract, <span --t="cuname"></span> agrees to resolve said dispute at the discretion of an external arbitrator to be selected by <span --t="coname"></span>, and waives the right to sue <span --t="coname"></span> in a court of law.
+                        <div class="pb"></div>
+                        On this date of <span class="curday"></span>, I, <span class="ul"></span> do affirm that <span --t="cuname"></span> will to the fullest extent of the law uphold and fulfill the terms of this contract,
+                        will not attempt to obtain the DELIVERABLES without rendering payment as specified in Section I, and will not in any way attempt to defraud <span --t="coname"></span> of money or property. Signed and forsworn,<br><span class="ul"></span> on this date of (DD/MM/YYYY) __/__/____<br>
+                        <br><br>
+                        On this date of <span class="curday"></span>, I, <span class="ul"></span> do affirm that <span --t="coname"></span> will to the fullest extent of the law uphold and fulfill the terms of this contract,
+                        will not attempt to obtain payment without delivery of the DELIVERABLES as specified in this contract, and will not in any way attempt to defraud <span --t="cuname"></span> of money or property. Signed and forsworn,<br>
+                        <span class="ul"></span>, on this date of (DD/MM/YYYY) __/__/____.
+                        <br><br>
+                        On this date of <span class="curday"></span>, I, <span class="ul"></span> do bear witness to the signing of this contract between <span --t="coname"></span> and <span --t="cuname"></span>,
+                        attest to its validity, and commit to defend the validity of this contract in a court of law if I am called forth to do so. Signed and forsworn,<br>
+                        <span class="ul"></span>, on this date of (DD/MM/YYYY) __/__/____.
+                    </td></tr>
+                </tbody>
+            </table>
+        </div>
+        <script src="contract-gen.js"></script>
+    </body>
+</html>

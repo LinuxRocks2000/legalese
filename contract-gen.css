@@ -1,0 +1,41 @@
+#print {
+    display: none;
+}
+
+@media print {
+    #print {
+        display: initial !important;
+    }
+
+    #ui {
+        display: none !important;
+    }
+
+    .pb {
+        page-break-before: always;
+    }
+
+    #header {
+        position: fixed;
+        top: 0px;
+    }
+}
+
+.i {
+    padding-left: 0.5in;
+}
+
+.r {
+    display: none;
+}
+
+input:checked ~ .r {
+    display: initial;
+}
+
+.ul {
+    display: inline-block;
+    width: 2in;
+    border-bottom: 1px solid black;
+    height: 2em;
+}
